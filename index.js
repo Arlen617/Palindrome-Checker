@@ -1,41 +1,41 @@
-//creat a site that would if a word is a palindrome or not
-/*
-1. get the input value from the site
-create a function the removes 
-2. reverse the string 
-    a.learn about split()
-3. match the word 
-4. notify the use of the result
-*/
-
 const textInput = document.getElementById("text-input");
 const checkBtn = document.getElementById("check-btn");
+let resultBox = document.getElementById("result");
 let purifiedString = "";
 let reversedString = "";
 
-//removes space panctuations and symbols from the sring and return
+function showMsg() {
+  if (isPalindrome()) {
+    resultBox.innerText = `${textInput.value} is a palindrome.`;
+  } else {
+    resultBox.innerText = `${textInput.value} is not a palindrome.`;
+  }
+}
+
 function purifyString(string) {
   const pattern = /[$\s\p{P}]/gu;
   purifiedString = string.replace(pattern, "");
+  purifiedString = purifiedString.toLowerCase();
+  console.log(purifiedString);
 }
-// this seperates the letter and reverses in an array.
 function reverseString(string) {
-  const seperateLetters = string.split("");
-  seperateLetters.reverse();
-  seperateLetters.join("");
-  reversedString = seperateLetters[0];
+  let resultArr = string.split("");
+  resultArr.reverse();
+  reversedString = resultArr.join("");
+  reversedString = reversedString.toLocaleLowerCase();
+  console.log(reversedString);
 }
 
 const isPalindrome = () => (reversedString === purifiedString ? true : false);
-/*
-purify the string
-reverse the string 
-compare the reverser string with the purified string
 
-*/
 checkBtn.addEventListener("click", () => {
   purifyString(textInput.value);
-  reverseString(textInput);
-  console.log(isPalindrome);
-  console.log("clicked");
+  if (purifiedString === "") {
+    alert("Please Input a value");
+    return;
+  }
+  reverseString(purifiedString);
+  console.log(isPalindrome());
+  showMsg();
+  textInput.value = "";
 });
