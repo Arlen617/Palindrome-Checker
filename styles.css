@@ -66,7 +66,7 @@ input {
 input::placeholder {
   color: var(--TEXT-COLOR);
   background-color: #0d5fb5;
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding: 1%;
 }
 

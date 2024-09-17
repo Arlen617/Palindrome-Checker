@@ -22,8 +22,6 @@ function reverseString(string) {
 
 const isPalindrome = (string) => {
   return purifyString(string) === reverseString(purifyString(string))
-    ? true
-    : false;
 };
 
 checkBtn.addEventListener("click", () => {
